@@ -6,6 +6,8 @@ import rateLimit from 'express-rate-limit';
 import { setupSwagger } from './swagger';
 import morgan from 'morgan';
 import { ONE_HUNDRED, SIXTY } from './core/constants';
+import routeUser from './routes/user.route';
+
 
 const app = express();
 app.use(express.json());
@@ -20,6 +22,7 @@ app.use(
 );
 
 app.use(morgan('combined'));
+app.use("/users",routeUser)
 
 setupSwagger(app);
 export default app;
